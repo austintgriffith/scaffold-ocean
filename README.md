@@ -2,6 +2,11 @@
 
 > a scaffold eth build to show movement on-chain
 
+> The `owner` can `launch()` ships that move at a dx/dy.
+
+![image](https://user-images.githubusercontent.com/2653167/149636948-748df47e-44ec-4e57-98ac-d1a833a4da9e.png)
+
+live example: http://scaffoldocean.surge.sh
 
 > running locally:
 
