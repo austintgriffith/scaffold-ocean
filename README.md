@@ -8,4 +8,7 @@ cd scaffold-ocean
 yarn install
 yarn chain
 yarn start 
+yarn deploy
 ```
+
+
