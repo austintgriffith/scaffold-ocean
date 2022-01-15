@@ -14,7 +14,7 @@ function Home({ yourLocalBalance, readContracts, currentCount }) {
   // in this case, let's keep track of 'purpose' variable from our contract
   //const purpose = useContractReader(readContracts, "YourContract", "purpose");
 
-  const currentTime = useContractReader(readContracts, "World", "currentTime");
+  const currentTime = useContractReader(readContracts, "Ocean", "currentTime");
 
   const [ actors, setActors ] = useState();
 
@@ -23,12 +23,14 @@ function Home({ yourLocalBalance, readContracts, currentCount }) {
       console.log("UPDATE!",currentCount)
       let allActors = []
       for(let id=0;id<currentCount;id++){
-        let actor = await readContracts.World.actors(id)
+        let actor = await readContracts.Ocean.actors(id)
         if(actor){
-            let currentLocation = await readContracts.World.currentLocation(id)
+            let currentLocation = await readContracts.Ocean.currentLocation(id)
             allActors.push({...actor,currentLocation})
         }
       }
+
+
       setActors(allActors)
     }
     getActors()
