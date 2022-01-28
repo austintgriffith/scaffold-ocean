@@ -29,7 +29,7 @@ contract Space is Ownable {
     uint208 timePassed = uint208(block.timestamp) - actors[id].timestamp;
     unchecked {
       uint16 currentX = uint16(uint208(actors[id].x) - uint208(timePassed * actors[id].dx));
-      uint16 currentY = uint16(uint208(actors[id].y) - uint208(timePassed * actors[id].dy)); 
+      uint16 currentY = uint16(uint208(actors[id].y) - uint208(timePassed * actors[id].dy));
       return [currentX,currentY];
     }
   }
@@ -38,7 +38,7 @@ contract Space is Ownable {
     return actors.length;
   }
 
-  function launch(uint16 x, uint16 y, uint8 dx, uint8 dy) public onlyOwner returns (uint256) {
+  function launch(uint16 x, uint16 y, uint8 dx, uint8 dy) public /* onlyOwner LET ANYONE MINT FOR NOW*/ returns (uint256) {
     actors.push(Actor({
       x: x,
       y: y,

@@ -144,6 +144,7 @@ export const NETWORKS = {
     chainId: 10,
     blockExplorer: "https://optimistic.etherscan.io/",
     rpcUrl: `https://mainnet.optimism.io`,
+    gasPrice: 1000000,
   },
   localAvalanche: {
     name: "localAvalanche",

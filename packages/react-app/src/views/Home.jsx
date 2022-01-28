@@ -87,7 +87,7 @@ function Home({ yourLocalBalance, readContracts, currentCount, tx, writeContract
       <div>Current Count: {currentCount && currentCount.toNumber()}</div>
       <div>ACTORS: { actors && actors.length }</div>
       <button onClick={()=>{
-        tx( writeContracts.Space.launch(250,250,2,2,{gasLimit: 300000}) )
+        tx( writeContracts.Space.launch(500,250,3,2,{gasLimit: 300000}) )
       }}>
         Launch
       </button>
