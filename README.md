@@ -1,4 +1,4 @@
-# 🌊 Scaffold Ocean
+# 🌊 Scaffold Space
 
 > a scaffold eth build to show movement on-chain
 
@@ -6,13 +6,13 @@
 
 ![image](https://user-images.githubusercontent.com/2653167/149636948-748df47e-44ec-4e57-98ac-d1a833a4da9e.png)
 
-live example: http://scaffoldocean.surge.sh
+live example: http://scaffoldSpace.surge.sh
 
 > running locally:
 
 ```bash
-git clone https://github.com/austintgriffith/scaffold-ocean
-cd scaffold-ocean
+git clone https://github.com/austintgriffith/scaffold-Space
+cd scaffold-Space
 yarn install
 yarn chain
 yarn start

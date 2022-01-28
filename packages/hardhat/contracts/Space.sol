@@ -5,7 +5,7 @@ import "hardhat/console.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
-contract Ocean is Ownable {
+contract Space is Ownable {
 
 
   function currentTime() public view returns (uint256) {
@@ -27,9 +27,11 @@ contract Ocean is Ownable {
 
   function currentLocation(uint256 id) public view returns (uint16[2] memory) {
     uint208 timePassed = uint208(block.timestamp) - actors[id].timestamp;
-    uint16 currentX = uint16(uint208(actors[id].x) + uint208(timePassed * actors[id].dx));
-    uint16 currentY = uint16(uint208(actors[id].y) + uint208(timePassed * actors[id].dy));
-    return [currentX,currentY];
+    unchecked {
+      uint16 currentX = uint16(uint208(actors[id].x) - uint208(timePassed * actors[id].dx));
+      uint16 currentY = uint16(uint208(actors[id].y) - uint208(timePassed * actors[id].dy)); 
+      return [currentX,currentY];
+    }
   }
 
   function currentCount() public view returns (uint256) {

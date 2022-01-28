@@ -53,7 +53,7 @@ const { ethers } = require("ethers");
 */
 
 /// 📡 What chain are your contracts deployed to?
-const initialNetwork = NETWORKS.optimism; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const initialNetwork = NETWORKS.kovan; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -167,7 +167,7 @@ function App(props) {
   ]);
 
   // keep track of a variable from the contract in the local React state:
-  const currentCount = useContractReader(readContracts, "Ocean", "currentCount");
+  const currentCount = useContractReader(readContracts, "Space", "currentCount");
   console.log("currentCount",currentCount)
 
   /*
@@ -259,7 +259,7 @@ function App(props) {
       />
       <Menu style={{ textAlign: "center", marginTop: 40 }} selectedKeys={[location.pathname]} mode="horizontal">
         <Menu.Item key="/">
-          <Link to="/">Ocean</Link>
+          <Link to="/">Space</Link>
         </Menu.Item>
         <Menu.Item key="/debug">
           <Link to="/debug">Debug Contracts</Link>
@@ -273,6 +273,8 @@ function App(props) {
             currentCount={currentCount}
             yourLocalBalance={yourLocalBalance}
             readContracts={readContracts}
+            writeContracts={writeContracts}
+            tx={tx}
           />
         </Route>
         <Route exact path="/debug">
@@ -283,7 +285,7 @@ function App(props) {
             */}
 
           <Contract
-            name="Ocean"
+            name="Space"
             price={price}
             signer={userSigner}
             provider={localProvider}

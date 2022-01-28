@@ -17,7 +17,7 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId();
 
-  await deploy("Ocean", {
+  await deploy("Space", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
     // args: [ "Hello", ethers.utils.parseEther("1.5") ],
@@ -27,8 +27,8 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
 
   // Getting a previously deployed contract
   console.log('\t',"🔖 Transferring Ownership...")
-  const Ocean = await ethers.getContract("Ocean", deployer);
-  await Ocean.transferOwnership("0x34aA3F359A9D614239015126635CE7732c18fDF3");
+  const Space = await ethers.getContract("Space", deployer);
+  await Space.transferOwnership("0x34aA3F359A9D614239015126635CE7732c18fDF3");
 
 
   /*
