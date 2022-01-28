@@ -1,10 +1,14 @@
-# 🌊 Scaffold Space
+# 🛰 Space Loogies on Optimism 🚀
+
+I think these ships will fly smoothly once optimism has live timestamps 
+
+live demo: http://spaceloogies.surge.sh
+
+![image](https://user-images.githubusercontent.com/2653167/151482371-ab22db92-1639-4e67-b645-70fa22b549b5.png)
 
 > a scaffold eth build to show movement on-chain
 
-> The `owner` can `launch()` ships that move at a dx/dy.
-
-![image](https://user-images.githubusercontent.com/2653167/149636948-748df47e-44ec-4e57-98ac-d1a833a4da9e.png)
+> `launch()` ships that move at a -dx/-dy.
 
 live example: http://scaffoldSpace.surge.sh
 
