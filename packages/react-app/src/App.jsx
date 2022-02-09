@@ -7,6 +7,7 @@ import {
   useGasPrice,
   useOnBlock,
   useUserProviderAndSigner,
+  useBlockNumber
 } from "eth-hooks";
 import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 import React, { useCallback, useEffect, useState } from "react";
@@ -23,6 +24,7 @@ import {
   NetworkDisplay,
   FaucetHint,
   NetworkSwitch,
+  Address
 } from "./components";
 import { NETWORKS, ALCHEMY_KEY } from "./constants";
 import externalContracts from "./contracts/external_contracts";
@@ -175,6 +177,8 @@ function App(props) {
   console.log("🏷 Resolved austingriffith.eth as:",addressFromENS)
   */
 
+  const blockNumber = useBlockNumber(localProvider, 500);
+
   //
   // 🧫 DEBUG 👨🏻‍🔬
   //
@@ -245,6 +249,12 @@ function App(props) {
 
   const faucetAvailable = localProvider && localProvider.connection && targetNetwork.name.indexOf("local") !== -1;
 
+  const currentTime = useContractReader(readContracts, "Time", "currentTime");
+
+  const currentBlock = useContractReader(readContracts, "Time", "getBlockNum");
+
+  console.log(readContracts)
+
   return (
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
@@ -257,45 +267,36 @@ function App(props) {
         logoutOfWeb3Modal={logoutOfWeb3Modal}
         USE_NETWORK_SELECTOR={USE_NETWORK_SELECTOR}
       />
-      <Menu style={{ textAlign: "center", marginTop: 40 }} selectedKeys={[location.pathname]} mode="horizontal">
-        <Menu.Item key="/">
-          <Link to="/">Space</Link>
-        </Menu.Item>
-        <Menu.Item key="/debug">
-          <Link to="/debug">Debug Contracts</Link>
-        </Menu.Item>
-      </Menu>
 
-      <Switch>
-        <Route exact path="/">
-          {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
-          <Home
-            currentCount={currentCount}
-            yourLocalBalance={yourLocalBalance}
-            readContracts={readContracts}
-            writeContracts={writeContracts}
-            tx={tx}
-          />
-        </Route>
-        <Route exact path="/debug">
-          {/*
-                🎛 this scaffolding is full of commonly used components
-                this <Contract/> component will automatically parse your ABI
-                and give you a form to interact with it locally
-            */}
+      <div key={blockNumber} style={{padding:64,fontSize:32}}>
 
-          <Contract
-            name="Space"
-            price={price}
-            signer={userSigner}
-            provider={localProvider}
-            address={address}
-            blockExplorer={blockExplorer}
-            contractConfig={contractConfig}
-          />
-        </Route>
+        <div style={{paddingBottom:64}}>
+          👋 welcome <Address value={address}/>
+        </div>
 
-      </Switch>
+        <h1>The current time on-chain is <b>{currentTime?currentTime.toNumber():"..."}</b></h1>
+
+        <h1>The current block is <b>{currentBlock?currentBlock.toNumber():"..."}</b> {(blockNumber)}</h1>
+
+        <div>
+          Time contract address: <Address blockExplorer={blockExplorer} value={readContracts&&readContracts.Time?readContracts.Time.address:""}/>
+        </div>
+
+        <div>
+          To connect to <span style={{color:targetNetwork.color}}>{targetNetwork.name}</span> we are using <b>{targetNetwork.rpcUrl}</b>
+        </div>
+
+        {/*<Contract
+          name="Time"
+          price={price}
+          signer={userSigner}
+          provider={localProvider}
+          address={address}
+          blockExplorer={blockExplorer}
+          contractConfig={contractConfig}
+        />
+        */}
+      </div>
 
       <ThemeSwitch />
 

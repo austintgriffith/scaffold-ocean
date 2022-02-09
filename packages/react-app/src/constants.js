@@ -17,6 +17,14 @@ export const NETWORKS = {
     blockExplorer: "",
     rpcUrl: "http://" + (global.window ? window.location.hostname : "localhost") + ":8545",
   },
+  optimism: {
+    name: "optimism",
+    color: "#f01a37",
+    chainId: 10,
+    blockExplorer: "https://optimistic.etherscan.io/",
+    rpcUrl: `https://mainnet.optimism.io`,
+    gasPrice: 1000000,
+  },
   mainnet: {
     name: "mainnet",
     color: "#ff8b9e",
@@ -137,14 +145,6 @@ export const NETWORKS = {
     blockExplorer: "https://kovan-optimistic.etherscan.io/",
     rpcUrl: `https://kovan.optimism.io`,
     gasPrice: 0,
-  },
-  optimism: {
-    name: "optimism",
-    color: "#f01a37",
-    chainId: 10,
-    blockExplorer: "https://optimistic.etherscan.io/",
-    rpcUrl: `https://mainnet.optimism.io`,
-    gasPrice: 1000000,
   },
   localAvalanche: {
     name: "localAvalanche",
